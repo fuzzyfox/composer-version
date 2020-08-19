@@ -11,15 +11,8 @@ use Composer\Plugin\PluginInterface;
 
 class Plugin implements PluginInterface, Capable, CommandProvider
 {
-    /** @var Composer */
-    private $composer;
-    /** @var IOInterface */
-    private $io;
-
     public function activate(Composer $composer, IOInterface $io)
     {
-        $this->composer = $composer;
-        $this->io = $io;
     }
 
     public function deactivate(Composer $composer, IOInterface $io)

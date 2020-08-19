@@ -4,7 +4,7 @@
     "type": "composer-plugin",
     "require": {
         "phlak/semver": "^3.2",
-        "composer-plugin-api": "^1.1"
+        "ext-json": "*"
     },
     "license": "MPL-2.0",
     "authors": [
@@ -14,7 +14,9 @@
         }
     ],
     "autoload": {
-        "FuzzyFox\\ComposerVersion": "src"
+        "psr-4": {
+            "FuzzyFox\\ComposerVersion\\": "src"
+        }
     },
     "extra": {
         "class": "FuzzyFox\\ComposerVersion\\Plugin"
