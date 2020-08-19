@@ -9,7 +9,13 @@
     },
     "license": "MPL-2.0",
     "homepage": "https://github.com/fuzzyfox/composer-version",
-    "keywords": ["version", "tag", "release", "composer", "plugin"],
+    "keywords": [
+        "version",
+        "tag",
+        "release",
+        "composer",
+        "plugin"
+    ],
     "authors": [
         {
             "name": "William Duyck",
@@ -23,5 +29,6 @@
     },
     "extra": {
         "class": "FuzzyFox\\ComposerVersion\\Plugin"
-    }
+    },
+    "version": "v0.1.2"
 }
