@@ -1,0 +1,22 @@
+{
+    "name": "fuzzyfox/composer-version",
+    "description": "Adds version management super powers similar to npm version to you project.",
+    "type": "composer-plugin",
+    "require": {
+        "phlak/semver": "^3.2",
+        "composer-plugin-api": "^1.1"
+    },
+    "license": "MPL-2.0",
+    "authors": [
+        {
+            "name": "William Duyck",
+            "email": "fuzzyfox0@gmail.com"
+        }
+    ],
+    "autoload": {
+        "FuzzyFox\\ComposerVersion": "src"
+    },
+    "extra": {
+        "class": "FuzzyFox\\ComposerVersion\\Plugin"
+    }
+}
