@@ -47,6 +47,7 @@ class Command extends BaseCommand
             case null:
                 $output->writeln("<info>{$this->getComposer()->getPackage()->getName()}: {$version}</info>");
                 $output->writeln("<info>Composer: {$this->getComposer()->getVersion()}</info>");
+                $output->writeln("<info>PHP: ".phpversion()."</info>");
                 return 0;
             case 'from-git':
                 $version = $this->getCurrentVersionFromGit();
