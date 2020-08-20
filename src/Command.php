@@ -3,14 +3,15 @@
 
 namespace FuzzyFox\ComposerVersion;
 
-use Composer\IO\IOInterface;
-use PHLAK\SemVer\Exceptions\InvalidVersionException;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 use Composer\Command\BaseCommand;
+use Composer\IO\IOInterface;
+use InvalidArgumentException;
 use PHLAK\SemVer;
+use PHLAK\SemVer\Exceptions\InvalidVersionException;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class Command extends BaseCommand
 {
@@ -36,7 +37,7 @@ class Command extends BaseCommand
         $newversion = $input->getArgument('newversion');
 
         if (!in_array(strtolower($input->getOption('preid')), $this->validPreIds)) {
-            throw new \InvalidArgumentException('preid must be one of: '.join(' | ', $this->validPreIds));
+            throw new InvalidArgumentException('preid must be one of: '.join(' | ', $this->validPreIds));
         }
 
         $version = $this->getCurrentVersion();
@@ -102,10 +103,10 @@ class Command extends BaseCommand
                 $version = $this->parseVersion($newversion);
         }
 
-//        if (shell_exec('git status --untracked-files=no --porcelain')) {
-//            $output->writeln('<error>You have uncommitted changes.</error>');
-//            return 1;
-//        }
+        if (shell_exec('git status --porcelain')) {
+            $output->writeln('<error>You have uncommitted changes.</error>');
+            return 1;
+        }
 
         $output->writeln($oldVersion->prefix());
 
